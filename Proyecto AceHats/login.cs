@@ -9,29 +9,42 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using MySql.Data.MySqlClient; // Libreria MySQL.Data en NuGet
+using Org.BouncyCastle.Tls;
+using System.Security.Cryptography;
 
 namespace Proyecto_AceHats
 {
     public partial class login : Form
     {
-        private string placeholderText = "account@example.com"; // Texto para el placeholder
-
         public login()
         {
             InitializeComponent();
-            // Se configura el palceholder al cargar el formulario
-            txtEmail.Text = placeholderText;
-            txtEmail.ForeColor = Color.Gray;
+        }
+
+        // Funcion para encriptar la contraseña usando SHA256
+        private string EncryptPass(string pass)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pass));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
 
         private void login_Load(object sender, EventArgs e)
         {
             // Redondear bordes
-            RedondearBoton(btnLogin, 50);
+            RedondearBoton(btnRegister, 50);
 
             // Eliminar bordes :skull:
-            btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.FlatAppearance.BorderSize = 0;
+            btnRegister.FlatStyle = FlatStyle.Flat;
+            btnRegister.FlatAppearance.BorderSize = 0;
 
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.FlatAppearance.BorderSize = 0;
@@ -57,26 +70,6 @@ namespace Proyecto_AceHats
             // radio, radio, radio, radio, radio
         }
 
-        private void txtEmail_Enter(object sender, EventArgs e)
-        {
-            // Al entrar, si el texto es el placeholder, lo borramos
-            if (txtEmail.Text == placeholderText)
-            {
-                txtEmail.Text = "";
-                txtEmail.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtEmail_Leave(object sender, EventArgs e)
-        {
-            // Al salir, si el TextBox esta vacio, se restaura el placeholder
-            if (string.IsNullOrEmpty(txtEmail.Text))
-            {
-                txtEmail.Text = placeholderText;
-                txtEmail.ForeColor = Color.Gray;
-            }
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -87,31 +80,83 @@ namespace Proyecto_AceHats
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void lblForgotPass_MouseEnter(object sender, EventArgs e)
-        {
-            lblForgotPass.ForeColor = Color.Black;
-            lblForgotPass.Cursor = Cursors.Hand;
-        }
-
-        private void lblForgotPass_MouseLeave(object sender, EventArgs e)
-        {
-            lblForgotPass.ForeColor = Color.Gray;
-        }
-
         private void btnLogin_MouseEnter(object sender, EventArgs e)
         {
-            btnLogin.Cursor = Cursors.Hand;
+            btnRegister.Cursor = Cursors.Hand;
         }
 
         private void lblAddUser_MouseEnter(object sender, EventArgs e)
         {
-            lblAddUser.ForeColor = Color.Black;
-            lblAddUser.Cursor = Cursors.Hand;
+            lblReturn.ForeColor = Color.Black;
+            lblReturn.Cursor = Cursors.Hand;
         }
 
         private void lblAddUser_MouseLeave(object sender, EventArgs e)
         {
-            lblAddUser.ForeColor = Color.Gray;
+            lblReturn.ForeColor = Color.Gray;
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            // Obtener los datos del formulario
+            string name = txtName.Text.Trim();
+            string user = txtUser.Text.Trim();
+            string pass = txtPass.Text;
+            string confirmPass = txtConfirmPass.Text;
+            string rol = rbAdmin.Checked ? "Administrador" : "Cajero";
+
+            // Validar las contraseñas
+            if (pass != confirmPass)
+            {
+                MessageBox.Show("Las contraseñas no coinciden.", "Error: 001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Encriptar la contraseña
+            string encryptedPass = EncryptPass(pass);
+
+            // Conexion a MySQL
+            string connectionString = "server=192.168.1.3; database=proyecto_acehats; uid=newuser; pwd=Taddei98"; // Cambiar estos valores dependiento de la pc
+
+            // Prevencion de inyeccion SQL
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Verificar si el usuario existe
+                    string verification = "SELECT COUNT(*) FROM usuarios WHERE usuario = @usuario";
+                    using (MySqlCommand cmdVerification = new MySqlCommand(verification, connection))
+                    {
+                        cmdVerification.Parameters.AddWithValue("@usuario", user);
+                        int count = Convert.ToInt32(cmdVerification.ExecuteScalar());
+                        if (count > 0)
+                        {
+                            MessageBox.Show("El usuario ya existe, favor de elegir otro.", "Error: 003", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    // Si el usuario esta disponible ahora si se ejecuta esto
+                    string query = "INSERT INTO usuarios (nombre, usuario, contraseña, rol) VALUES (@nombre, @usuario, @contraseña, @rol)";
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", name);
+                        cmd.Parameters.AddWithValue("@usuario", user);
+                        cmd.Parameters.AddWithValue("@contraseña", encryptedPass);
+                        cmd.Parameters.AddWithValue("@rol", rol);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Usuario registrado correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al registrar el usuario: " + ex.Message, "Error: 002", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
