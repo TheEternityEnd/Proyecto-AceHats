@@ -105,6 +105,13 @@ namespace Proyecto_AceHats
             string confirmPass = txtConfirmPass.Text;
             string rol = rbAdmin.Checked ? "Administrador" : "Cajero";
 
+            // Validar que los campos no esten vacios
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass) || string.IsNullOrEmpty(confirmPass) || !rbAdmin.Checked && !rbCashier.Checked)
+            {
+                MessageBox.Show("Porfavor, llene todos los campos requeridos.", "Error: 004", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             // Validar las contraseñas
             if (pass != confirmPass)
             {
@@ -116,8 +123,9 @@ namespace Proyecto_AceHats
             string encryptedPass = EncryptPass(pass);
 
             // Conexion a MySQL
-            string connectionString = "server=192.168.1.3; database=proyecto_acehats; uid=newuser; pwd=Taddei98"; // Cambiar estos valores dependiento de la pc
-
+            string connectionString = "server=192.168.1.3; database=proyecto_acehats; uid=newuser; pwd=Taddei98"; // LaPecerda
+            // string connectionString = "server=localhost; database=proyecto_acehats; uid=root; pwd=admin"; // LaMaleducada
+        
             // Prevencion de inyeccion SQL
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -157,6 +165,14 @@ namespace Proyecto_AceHats
                     MessageBox.Show("Error al registrar el usuario: " + ex.Message, "Error: 002", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void lblReturn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            signIn signin = new signIn();
+            signin.FormClosed += (a, args) => Application.Exit();
+            signin.Show();
         }
     }
 }

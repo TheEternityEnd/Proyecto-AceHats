@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_AceHats
 {
-    partial class singIn
+    partial class signIn
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -30,13 +30,12 @@
         {
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblForgotPass = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblAddUser = new System.Windows.Forms.Label();
@@ -65,26 +64,26 @@
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
-            // txtEmail
+            // txtUser
             // 
-            this.txtEmail.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEmail.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(38, 367);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(299, 19);
-            this.txtEmail.TabIndex = 2;
+            this.txtUser.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtUser.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.Location = new System.Drawing.Point(38, 367);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(299, 19);
+            this.txtUser.TabIndex = 2;
             // 
-            // textBox1
+            // txtPass
             // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(38, 469);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '●';
-            this.textBox1.Size = new System.Drawing.Size(299, 19);
-            this.textBox1.TabIndex = 3;
+            this.txtPass.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPass.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Location = new System.Drawing.Point(38, 469);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '●';
+            this.txtPass.Size = new System.Drawing.Size(299, 19);
+            this.txtPass.TabIndex = 3;
             // 
             // panel1
             // 
@@ -122,19 +121,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "USUARIO";
             // 
-            // lblForgotPass
-            // 
-            this.lblForgotPass.AutoSize = true;
-            this.lblForgotPass.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForgotPass.ForeColor = System.Drawing.Color.Gray;
-            this.lblForgotPass.Location = new System.Drawing.Point(194, 498);
-            this.lblForgotPass.Name = "lblForgotPass";
-            this.lblForgotPass.Size = new System.Drawing.Size(143, 15);
-            this.lblForgotPass.TabIndex = 8;
-            this.lblForgotPass.Text = "Contraseña Olvidada";
-            this.lblForgotPass.MouseEnter += new System.EventHandler(this.lblForgotPass_MouseEnter);
-            this.lblForgotPass.MouseLeave += new System.EventHandler(this.lblForgotPass_MouseLeave);
-            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
@@ -146,6 +132,7 @@
             this.btnLogin.TabIndex = 9;
             this.btnLogin.Text = "Iniciar Sesion";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             this.btnLogin.MouseEnter += new System.EventHandler(this.btnLogin_MouseEnter);
             // 
             // pictureBox1
@@ -172,7 +159,7 @@
             this.lblAddUser.MouseEnter += new System.EventHandler(this.lblAddUser_MouseEnter);
             this.lblAddUser.MouseLeave += new System.EventHandler(this.lblAddUser_MouseLeave);
             // 
-            // singIn
+            // signIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -180,18 +167,17 @@
             this.ClientSize = new System.Drawing.Size(368, 646);
             this.Controls.Add(this.lblAddUser);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.lblForgotPass);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtPass);
+            this.Controls.Add(this.txtUser);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "singIn";
+            this.Name = "signIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.login_Load);
@@ -205,13 +191,12 @@
 
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblForgotPass;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblAddUser;

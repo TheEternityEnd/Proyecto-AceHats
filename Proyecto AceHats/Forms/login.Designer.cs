@@ -163,6 +163,7 @@
             this.lblReturn.Size = new System.Drawing.Size(48, 15);
             this.lblReturn.TabIndex = 11;
             this.lblReturn.Text = "Volver";
+            this.lblReturn.Click += new System.EventHandler(this.lblReturn_Click);
             this.lblReturn.MouseEnter += new System.EventHandler(this.lblAddUser_MouseEnter);
             this.lblReturn.MouseLeave += new System.EventHandler(this.lblAddUser_MouseLeave);
             // 

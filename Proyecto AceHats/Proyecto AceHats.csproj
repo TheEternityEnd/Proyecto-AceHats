@@ -98,25 +98,86 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="login.cs">
+    <Compile Include="Forms\AceHats.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="login.Designer.cs">
+    <Compile Include="Forms\AceHats.Designer.cs">
+      <DependentUpon>AceHats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AdminForms\userVerification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdminForms\userVerification.Designer.cs">
+      <DependentUpon>userVerification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
-    <Compile Include="singIn.cs">
+    <Compile Include="Classes\SessionData.cs" />
+    <Compile Include="Forms\RegularForms\formAside.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="singIn.Designer.cs">
-      <DependentUpon>singIn.cs</DependentUpon>
+    <Compile Include="Forms\RegularForms\formAside.Designer.cs">
+      <DependentUpon>formAside.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formDashboard.Designer.cs">
+      <DependentUpon>formDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formDataReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formDataReview.Designer.cs">
+      <DependentUpon>formDataReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formInv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formInv.Designer.cs">
+      <DependentUpon>formInv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formPayments.Designer.cs">
+      <DependentUpon>formPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formPriceG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formPriceG.Designer.cs">
+      <DependentUpon>formPriceG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formShipping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegularForms\formShipping.Designer.cs">
+      <DependentUpon>formShipping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\signIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\signIn.Designer.cs">
+      <DependentUpon>signIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="login.resx">
+    <EmbeddedResource Include="Forms\AceHats.resx">
+      <DependentUpon>AceHats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdminForms\userVerification.resx">
+      <DependentUpon>userVerification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="singIn.resx">
-      <DependentUpon>singIn.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\signIn.resx">
+      <DependentUpon>signIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,6 +211,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\userPH.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

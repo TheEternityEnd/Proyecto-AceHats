@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Proyecto_AceHats.Forms;
+using Proyecto_AceHats.Forms.RegularForms;
+using Proyecto_AceHats.Forms.AdminForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +19,7 @@ namespace Proyecto_AceHats
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new login());
+            Application.Run(new signIn());
         }
     }
 }
