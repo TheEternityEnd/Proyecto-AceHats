@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_AceHats
 {
-    partial class login
+    partial class formSignIn
     {
         /// <summary>
         /// Variable del diseñador necesaria.

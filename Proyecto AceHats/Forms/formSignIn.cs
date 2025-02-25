@@ -9,35 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using MySql.Data.MySqlClient; // Libreria MySQL.Data en NuGet
+using Org.BouncyCastle.Tls;
 using System.Security.Cryptography;
-using System.Xml.Linq;
-using MySql.Data.Types;
-using MySql.Data.MySqlClient;
-using Proyecto_AceHats.Forms;
 
 namespace Proyecto_AceHats
 {
-    public partial class signIn : Form
+    public partial class formSignIn : Form
     {
-        public signIn()
+        public formSignIn()
         {
             InitializeComponent();
-        }
-
-        private void login_Load(object sender, EventArgs e)
-        {
-            // Redondear bordes
-            RedondearBoton(btnLogin, 50);
-
-            // Eliminar bordes :skull:
-            btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.FlatAppearance.BorderSize = 0;
-
-            btnClose.FlatStyle = FlatStyle.Flat;
-            btnClose.FlatAppearance.BorderSize = 0;
-
-            btnMinimize.FlatStyle = FlatStyle.Flat;
-            btnMinimize.FlatAppearance.BorderSize = 0;
         }
 
         // Funcion para encriptar la contraseña usando SHA256
@@ -53,6 +35,22 @@ namespace Proyecto_AceHats
                 }
                 return builder.ToString();
             }
+        }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+            // Redondear bordes
+            RedondearBoton(btnRegister, 50);
+
+            // Eliminar bordes :skull:
+            btnRegister.FlatStyle = FlatStyle.Flat;
+            btnRegister.FlatAppearance.BorderSize = 0;
+
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.FlatAppearance.BorderSize = 0;
+
+            btnMinimize.FlatStyle = FlatStyle.Flat;
+            btnMinimize.FlatAppearance.BorderSize = 0;
         }
 
         private void RedondearBoton(Button btn, int radio) // Funcion para redonear los bordes de los botones [as]
@@ -84,93 +82,97 @@ namespace Proyecto_AceHats
 
         private void btnLogin_MouseEnter(object sender, EventArgs e)
         {
-            btnLogin.Cursor = Cursors.Hand;
+            btnRegister.Cursor = Cursors.Hand;
         }
 
         private void lblAddUser_MouseEnter(object sender, EventArgs e)
         {
-            lblAddUser.ForeColor = Color.Black;
-            lblAddUser.Cursor = Cursors.Hand;
+            lblReturn.ForeColor = Color.Black;
+            lblReturn.Cursor = Cursors.Hand;
         }
 
         private void lblAddUser_MouseLeave(object sender, EventArgs e)
         {
-            lblAddUser.ForeColor = Color.Gray;
+            lblReturn.ForeColor = Color.Gray;
         }
 
-        private void lblAddUser_Click(object sender, EventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            login login = new login();
-            login.FormClosed += (a, args) => Application.Exit();
-            login.Show();
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            // Obtener y validad los campos
+            // Obtener los datos del formulario
+            string name = txtName.Text.Trim();
             string user = txtUser.Text.Trim();
             string pass = txtPass.Text;
+            string confirmPass = txtConfirmPass.Text;
+            string rol = rbAdmin.Checked ? "Administrador" : "Cajero";
 
-            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
+            // Validar que los campos no esten vacios
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass) || string.IsNullOrEmpty(confirmPass) || !rbAdmin.Checked && !rbCashier.Checked)
             {
                 MessageBox.Show("Porfavor, llene todos los campos requeridos.", "Error: 004", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Ecriptar la contraseña igresada
+            // Validar las contraseñas
+            if (pass != confirmPass)
+            {
+                MessageBox.Show("Las contraseñas no coinciden.", "Error: 001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Encriptar la contraseña
             string encryptedPass = EncryptPass(pass);
 
             // Conexion a MySQL
             string connectionString = "server=192.168.1.3; database=proyecto_acehats; uid=newuser; pwd=Taddei98"; // LaPecerda
             // string connectionString = "server=localhost; database=proyecto_acehats; uid=root; pwd=admin"; // LaMaleducada
-
+        
             // Prevencion de inyeccion SQL
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
                 {
-                    // Abrir conexion
-                    connection.Open(); // IMPORTANTE!!! PERDI 2 HORAS TRATANDO DE AVERIGUAR PORQUE 
-                    //PUTAS MADRES LA APLICACION NO SE CONECTABA A LA BASE DE DATOS Y AL FINAL ERA QUE HABIA 
-                    //BORRADO ESTA JODIDA LINEA DE MIERDAAAAAAAAAAA
+                    connection.Open();
 
-                    // Consulta para verificar credenciales
-                    string query = "SELECT id_usuario, nombre, usuario, rol FROM usuarios WHERE usuario = @usuario AND contraseña = @contraseña LIMIT 1";
-                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    // Verificar si el usuario existe
+                    string verification = "SELECT COUNT(*) FROM usuarios WHERE usuario = @usuario";
+                    using (MySqlCommand cmdVerification = new MySqlCommand(verification, connection))
                     {
-                        cmd.Parameters.AddWithValue("@usuario", user);
-                        cmd.Parameters.AddWithValue("@contraseña", encryptedPass);
-
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        cmdVerification.Parameters.AddWithValue("@usuario", user);
+                        int count = Convert.ToInt32(cmdVerification.ExecuteScalar());
+                        if (count > 0)
                         {
-                            if (reader.Read())
-                            {
-                                // Guardar los datos del usuario en SessionData
-                                SessionData.idUser = reader.GetInt32("id_usuario");
-                                SessionData.name = reader.GetString("nombre");
-                                SessionData.user = reader.GetString("usuario");
-                                SessionData.rol = reader.GetString("rol");
-
-                                // Abrir el formulario principal
-                                AceHats main = new AceHats();
-                                main.Show();
-
-                                //Ocultar el formulario actual
-                                this.Hide();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Credenciales incorrectas. Verifica los datos ingresados.", "Error: 006", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            MessageBox.Show("El usuario ya existe, favor de elegir otro.", "Error: 003", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                     }
+
+                    // Si el usuario esta disponible ahora si se ejecuta esto
+                    string query = "INSERT INTO usuarios (nombre, usuario, contraseña, rol) VALUES (@nombre, @usuario, @contraseña, @rol)";
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", name);
+                        cmd.Parameters.AddWithValue("@usuario", user);
+                        cmd.Parameters.AddWithValue("@contraseña", encryptedPass);
+                        cmd.Parameters.AddWithValue("@rol", rol);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Usuario registrado correctamente.", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al iniciar sesion: " + ex.Message, "Error: 002", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al registrar el usuario: " + ex.Message, "Error: 002", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void lblReturn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            formLogIn signin = new formLogIn();
+            signin.FormClosed += (a, args) => Application.Exit();
+            signin.Show();
         }
     }
 }

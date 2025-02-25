@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Proyecto_AceHats.Forms.RegularForms
+namespace Proyecto_AceHats.Forms.AdminForms
 {
-    public partial class formDataReview: Form
+    public partial class formAdmin: Form
     {
-        public formDataReview()
+        public formAdmin()
         {
             InitializeComponent();
         }

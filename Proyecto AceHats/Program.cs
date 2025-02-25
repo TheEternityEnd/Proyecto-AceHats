@@ -19,7 +19,7 @@ namespace Proyecto_AceHats
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new signIn());
+            Application.Run(new formLogIn());
         }
     }
 }

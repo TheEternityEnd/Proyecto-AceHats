@@ -84,6 +84,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.0\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,23 +99,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AceHats.cs">
+    <Compile Include="Forms\formAceHats.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AceHats.Designer.cs">
-      <DependentUpon>AceHats.cs</DependentUpon>
+    <Compile Include="Forms\formAceHats.Designer.cs">
+      <DependentUpon>formAceHats.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AdminForms\userVerification.cs">
+    <Compile Include="Forms\AdminForms\formAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AdminForms\userVerification.Designer.cs">
-      <DependentUpon>userVerification.cs</DependentUpon>
+    <Compile Include="Forms\AdminForms\formAdmin.Designer.cs">
+      <DependentUpon>formAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\login.cs">
+    <Compile Include="Forms\formSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\login.Designer.cs">
-      <DependentUpon>login.cs</DependentUpon>
+    <Compile Include="Forms\formSignIn.Designer.cs">
+      <DependentUpon>formSignIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\SessionData.cs" />
     <Compile Include="Forms\RegularForms\formAside.cs">
@@ -129,11 +130,11 @@
     <Compile Include="Forms\RegularForms\formDashboard.Designer.cs">
       <DependentUpon>formDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RegularForms\formDataReview.cs">
+    <Compile Include="Forms\RegularForms\formSaleReview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RegularForms\formDataReview.Designer.cs">
-      <DependentUpon>formDataReview.cs</DependentUpon>
+    <Compile Include="Forms\RegularForms\formSaleReview.Designer.cs">
+      <DependentUpon>formSaleReview.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RegularForms\formInv.cs">
       <SubType>Form</SubType>
@@ -159,25 +160,46 @@
     <Compile Include="Forms\RegularForms\formShipping.Designer.cs">
       <DependentUpon>formShipping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\signIn.cs">
+    <Compile Include="Forms\formLogIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\signIn.Designer.cs">
-      <DependentUpon>signIn.cs</DependentUpon>
+    <Compile Include="Forms\formLogIn.Designer.cs">
+      <DependentUpon>formLogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AceHats.resx">
-      <DependentUpon>AceHats.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\formAceHats.resx">
+      <DependentUpon>formAceHats.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AdminForms\userVerification.resx">
-      <DependentUpon>userVerification.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AdminForms\formAdmin.resx">
+      <DependentUpon>formAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\login.resx">
-      <DependentUpon>login.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\formSignIn.resx">
+      <DependentUpon>formSignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\signIn.resx">
-      <DependentUpon>signIn.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\formLogIn.resx">
+      <DependentUpon>formLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegularForms\formAside.resx">
+      <DependentUpon>formAside.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegularForms\formDashboard.resx">
+      <DependentUpon>formDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegularForms\formInv.resx">
+      <DependentUpon>formInv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegularForms\formPayments.resx">
+      <DependentUpon>formPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegularForms\formPriceG.resx">
+      <DependentUpon>formPriceG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegularForms\formSaleReview.resx">
+      <DependentUpon>formSaleReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegularForms\formShipping.resx">
+      <DependentUpon>formShipping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -213,6 +235,8 @@
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
     <None Include="Resources\userPH.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\RegularForms\subForms\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

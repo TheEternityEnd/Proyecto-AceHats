@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_AceHats.Forms
 {
-    partial class AceHats
+    partial class formAceHats
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.lblAdmin = new System.Windows.Forms.Label();
             this.pbProfile = new System.Windows.Forms.PictureBox();
+            this.lblSignOut = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +65,7 @@
             this.lblDashboard.Size = new System.Drawing.Size(110, 23);
             this.lblDashboard.TabIndex = 1;
             this.lblDashboard.Text = "Dashboard";
+            this.lblDashboard.Click += new System.EventHandler(this.lblDashboard_Click);
             this.lblDashboard.MouseEnter += new System.EventHandler(this.lblDashboard_MouseEnter);
             this.lblDashboard.MouseLeave += new System.EventHandler(this.lblDashboard_MouseLeave);
             // 
@@ -182,12 +184,11 @@
             // 
             // lblName
             // 
-            this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.SystemColors.Control;
             this.lblName.Location = new System.Drawing.Point(38, 148);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(58, 19);
+            this.lblName.Size = new System.Drawing.Size(193, 19);
             this.lblName.TabIndex = 11;
             this.lblName.Text = "label1";
             // 
@@ -226,12 +227,26 @@
             this.pbProfile.TabIndex = 10;
             this.pbProfile.TabStop = false;
             // 
-            // AceHats
+            // lblSignOut
+            // 
+            this.lblSignOut.AutoSize = true;
+            this.lblSignOut.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSignOut.ForeColor = System.Drawing.Color.Gray;
+            this.lblSignOut.Location = new System.Drawing.Point(12, 695);
+            this.lblSignOut.Name = "lblSignOut";
+            this.lblSignOut.Size = new System.Drawing.Size(96, 15);
+            this.lblSignOut.TabIndex = 14;
+            this.lblSignOut.Text = "Cerrar Sesion";
+            this.lblSignOut.MouseEnter += new System.EventHandler(this.lblSignOut_MouseEnter);
+            this.lblSignOut.MouseLeave += new System.EventHandler(this.lblSignOut_MouseLeave);
+            // 
+            // formAceHats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1083, 722);
+            this.Controls.Add(this.lblSignOut);
             this.Controls.Add(this.lblAdmin);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblName);
@@ -248,7 +263,7 @@
             this.Controls.Add(this.panelMain);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AceHats";
+            this.Name = "formAceHats";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AceHats";
             this.Load += new System.EventHandler(this.AceHats_Load);
@@ -274,5 +289,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblAdmin;
+        private System.Windows.Forms.Label lblSignOut;
     }
 }

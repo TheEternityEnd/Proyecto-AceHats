@@ -1,4 +1,5 @@
 ﻿using Proyecto_AceHats.Forms.AdminForms;
+using Proyecto_AceHats.Forms.RegularForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,9 @@ using ZstdSharp.Unsafe;
 
 namespace Proyecto_AceHats.Forms
 {
-    public partial class AceHats: Form
+    public partial class formAceHats: Form
     {
-        public AceHats()
+        public formAceHats()
         {
             InitializeComponent();
         }
@@ -172,45 +173,136 @@ namespace Proyecto_AceHats.Forms
             lblAdmin.ForeColor = Color.Gray;
         }
 
-
+        private void lblSignOut_MouseEnter(object sender, EventArgs e)
+        {
+            lblSignOut.ForeColor = Color.White;
+            lblSignOut.Cursor = Cursors.Hand;
+        }
+        private void lblSignOut_MouseLeave(object sender, EventArgs e)
+        {
+            lblSignOut.ForeColor = Color.Gray;
+        }
         /// <summary>
         /// ============== FIN DISEÑO DE LOS LABELS (((IGNORAR))) ============== \\\
         /// </summary>
-
-        private void lblSaleReview_Click(object sender, EventArgs e)
+        
+        private void lblDashboard_Click(object sender, EventArgs e)
         {
+            panelMain.Controls.Clear();
+            formDashboard formVer = new formDashboard();
 
-        }
+            // Configuracion del formulario para que se comporte como control
+            formVer.TopLevel = false;
+            formVer.Dock = DockStyle.Fill;
 
-        private void lblShipping_Click(object sender, EventArgs e)
-        {
+            // Agregar el formulario al panel
+            panelMain.Controls.Add(formVer);
+            panelMain.Tag = formVer;
 
-        }
-
-        private void lblPayments_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblAside_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblPriceG_Click(object sender, EventArgs e)
-        {
-
+            formVer.Show();
         }
 
         private void lblInv_Click(object sender, EventArgs e)
         {
+            panelMain.Controls.Clear();
+            formInv formVer = new formInv();
 
+            // Configuracion del formulario para que se comporte como control
+            formVer.TopLevel = false;
+            formVer.Dock = DockStyle.Fill;
+
+            // Agregar el formulario al panel
+            panelMain.Controls.Add(formVer);
+            panelMain.Tag = formVer;
+
+            formVer.Show();
         }
 
+        private void lblPriceG_Click(object sender, EventArgs e)
+        {
+            panelMain.Controls.Clear();
+            formPriceG formVer = new formPriceG();
+
+            // Configuracion del formulario para que se comporte como control
+            formVer.TopLevel = false;
+            formVer.Dock = DockStyle.Fill;
+
+            // Agregar el formulario al panel
+            panelMain.Controls.Add(formVer);
+            panelMain.Tag = formVer;
+
+            formVer.Show();
+        }
+
+        private void lblAside_Click(object sender, EventArgs e)
+        {
+            panelMain.Controls.Clear();
+            formAside formVer = new formAside();
+
+            // Configuracion del formulario para que se comporte como control
+            formVer.TopLevel = false;
+            formVer.Dock = DockStyle.Fill;
+
+            // Agregar el formulario al panel
+            panelMain.Controls.Add(formVer);
+            panelMain.Tag = formVer;
+
+            formVer.Show();
+        }
+
+        private void lblPayments_Click(object sender, EventArgs e)
+        {
+            panelMain.Controls.Clear();
+            formPayments formVer = new formPayments();
+
+            // Configuracion del formulario para que se comporte como control
+            formVer.TopLevel = false;
+            formVer.Dock = DockStyle.Fill;
+
+            // Agregar el formulario al panel
+            panelMain.Controls.Add(formVer);
+            panelMain.Tag = formVer;
+
+            formVer.Show();
+        }
+
+        private void lblShipping_Click(object sender, EventArgs e)
+        {
+            panelMain.Controls.Clear();
+            formShipping formVer = new formShipping();
+
+            // Configuracion del formulario para que se comporte como control
+            formVer.TopLevel = false;
+            formVer.Dock = DockStyle.Fill;
+
+            // Agregar el formulario al panel
+            panelMain.Controls.Add(formVer);
+            panelMain.Tag = formVer;
+
+            formVer.Show();
+        }
+
+        private void lblSaleReview_Click(object sender, EventArgs e)
+        {
+            panelMain.Controls.Clear();
+            formSaleReview formVer = new formSaleReview();
+
+            // Configuracion del formulario para que se comporte como control
+            formVer.TopLevel = false;
+            formVer.Dock = DockStyle.Fill;
+
+            // Agregar el formulario al panel
+            panelMain.Controls.Add(formVer);
+            panelMain.Tag = formVer;
+
+            formVer.Show();
+        }
+
+        // Formulario exclusivo para administradores
         private void lblAdmin_Click(object sender, EventArgs e)
         {
             panelMain.Controls.Clear();
-            userVerification formVer = new userVerification();
+            formAdmin formVer = new formAdmin();
 
             // Configuracion del formulario para que se comporte como control
             formVer.TopLevel = false;
