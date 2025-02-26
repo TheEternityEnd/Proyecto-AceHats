@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelMain = new System.Windows.Forms.Panel();
             this.lblDashboard = new System.Windows.Forms.Label();
             this.lblInv = new System.Windows.Forms.Label();
@@ -43,6 +44,8 @@
             this.lblAdmin = new System.Windows.Forms.Label();
             this.pbProfile = new System.Windows.Forms.PictureBox();
             this.lblSignOut = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.timerD = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,6 +184,7 @@
             this.btnMinimize.TabIndex = 9;
             this.btnMinimize.Text = "_";
             this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // lblName
             // 
@@ -240,12 +244,28 @@
             this.lblSignOut.MouseEnter += new System.EventHandler(this.lblSignOut_MouseEnter);
             this.lblSignOut.MouseLeave += new System.EventHandler(this.lblSignOut_MouseLeave);
             // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.Color.Gray;
+            this.lblDate.Location = new System.Drawing.Point(261, 18);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(46, 14);
+            this.lblDate.TabIndex = 15;
+            this.lblDate.Text = "label1";
+            // 
+            // timerD
+            // 
+            this.timerD.Tick += new System.EventHandler(this.timerD_Tick);
+            // 
             // formAceHats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1083, 722);
+            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblSignOut);
             this.Controls.Add(this.lblAdmin);
             this.Controls.Add(this.lblUser);
@@ -290,5 +310,7 @@
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblAdmin;
         private System.Windows.Forms.Label lblSignOut;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Timer timerD;
     }
 }

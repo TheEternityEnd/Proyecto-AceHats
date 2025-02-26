@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Proyecto_AceHats.Forms.RegularForms
 {

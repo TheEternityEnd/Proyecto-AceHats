@@ -76,6 +76,11 @@ namespace Proyecto_AceHats.Forms
             {
                 lblAdmin.Visible = false;
             }
+
+            Timer timerDate = new Timer();
+            timerDate.Interval = 1; // Actualiza cada 0.001 segundos
+            timerDate.Tick += timerD_Tick;
+            timerDate.Start();
         }
         
         private void btnClose_Click(object sender, EventArgs e)
@@ -313,6 +318,16 @@ namespace Proyecto_AceHats.Forms
             panelMain.Tag = formVer;
 
             formVer.Show();
+        }
+
+        private void timerD_Tick(object sender, EventArgs e)
+        {
+            lblDate.Text = DateTime.Now.ToString("dd MMMM, yyyy"); // Actualiza el label por cada tick asignado
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
