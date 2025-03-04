@@ -7,18 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_AceHats.Forms.RegularForms.subForms;
+
+
 
 namespace Proyecto_AceHats.Forms.RegularForms
 {
     public partial class formInv: Form
     {
         private string placeHolderText = "Buscar por Nombre o Categoria"; // Cabiar el texto del placeholder de la barra de busqueda
-        public formInv()
+        private formAceHats formMain;
+
+        public formInv(formAceHats main)
         {
             InitializeComponent();
             // Configurar el placeholder al cargar el formulario
             txtSearch.Text = placeHolderText;
             txtSearch.ForeColor = Color.Gray;
+            formMain = main;
         }
 
         private void txtSearch_Enter(object sender, EventArgs e)
@@ -39,6 +45,11 @@ namespace Proyecto_AceHats.Forms.RegularForms
                 txtSearch.Text = placeHolderText;
                 txtSearch.ForeColor = Color.Gray;
             }
+        }
+
+        private void btnAddP_Click(object sender, EventArgs e)
+        {
+            formMain.OpenFormInPanel(new formAddGoods());
         }
     }
 }

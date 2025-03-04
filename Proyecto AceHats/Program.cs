@@ -1,6 +1,7 @@
 ﻿using Proyecto_AceHats.Forms;
 using Proyecto_AceHats.Forms.RegularForms;
 using Proyecto_AceHats.Forms.AdminForms;
+using Proyecto_AceHats.Forms.RegularForms.subForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;

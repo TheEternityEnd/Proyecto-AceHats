@@ -30,8 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnUpdateDB = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnAddP = new System.Windows.Forms.Button();
+            this.btnMod = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,16 +55,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(740, 424);
             this.dataGridView1.TabIndex = 1;
             // 
-            // btnUpdateDB
-            // 
-            this.btnUpdateDB.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateDB.Location = new System.Drawing.Point(673, 545);
-            this.btnUpdateDB.Name = "btnUpdateDB";
-            this.btnUpdateDB.Size = new System.Drawing.Size(99, 61);
-            this.btnUpdateDB.TabIndex = 2;
-            this.btnUpdateDB.Text = "Guardar Cambios";
-            this.btnUpdateDB.UseVisualStyleBackColor = true;
-            // 
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -79,13 +70,33 @@
             this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
+            // btnAddP
+            // 
+            this.btnAddP.Location = new System.Drawing.Point(32, 559);
+            this.btnAddP.Name = "btnAddP";
+            this.btnAddP.Size = new System.Drawing.Size(110, 23);
+            this.btnAddP.TabIndex = 4;
+            this.btnAddP.Text = "Agregar Producto";
+            this.btnAddP.UseVisualStyleBackColor = true;
+            this.btnAddP.Click += new System.EventHandler(this.btnAddP_Click);
+            // 
+            // btnMod
+            // 
+            this.btnMod.Location = new System.Drawing.Point(148, 559);
+            this.btnMod.Name = "btnMod";
+            this.btnMod.Size = new System.Drawing.Size(128, 23);
+            this.btnMod.TabIndex = 5;
+            this.btnMod.Text = "Modificar Existencias";
+            this.btnMod.UseVisualStyleBackColor = true;
+            // 
             // formInv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(807, 669);
+            this.Controls.Add(this.btnMod);
+            this.Controls.Add(this.btnAddP);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnUpdateDB);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -101,7 +112,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnUpdateDB;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnAddP;
+        private System.Windows.Forms.Button btnMod;
     }
 }

@@ -191,133 +191,61 @@ namespace Proyecto_AceHats.Forms
         /// ============== FIN DISEÑO DE LOS LABELS (((IGNORAR))) ============== \\\
         /// </summary>
         
-        private void lblDashboard_Click(object sender, EventArgs e)
+        // Funcion que me simplifica la vida x99999999999999999
+        public void OpenFormInPanel(Form formSlave)
         {
             panelMain.Controls.Clear();
-            formDashboard formVer = new formDashboard();
+            formSlave.TopLevel = false;
 
             // Configuracion del formulario para que se comporte como control
-            formVer.TopLevel = false;
-            formVer.Dock = DockStyle.Fill;
+            formSlave.FormBorderStyle = FormBorderStyle.None;
+            formSlave.Dock = DockStyle.Fill;
 
             // Agregar el formulario al panel
-            panelMain.Controls.Add(formVer);
-            panelMain.Tag = formVer;
+            panelMain.Controls.Add(formSlave);
+            panelMain.Tag = formSlave;
+            formSlave.Show();
+        }
 
-            formVer.Show();
+        private void lblDashboard_Click(object sender, EventArgs e)
+        {
+            OpenFormInPanel(new formDashboard());
         }
 
         private void lblInv_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            formInv formVer = new formInv();
-
-            // Configuracion del formulario para que se comporte como control
-            formVer.TopLevel = false;
-            formVer.Dock = DockStyle.Fill;
-
-            // Agregar el formulario al panel
-            panelMain.Controls.Add(formVer);
-            panelMain.Tag = formVer;
-
-            formVer.Show();
+            OpenFormInPanel(new formInv(this));
         }
 
         private void lblPriceG_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            formPriceG formVer = new formPriceG();
-
-            // Configuracion del formulario para que se comporte como control
-            formVer.TopLevel = false;
-            formVer.Dock = DockStyle.Fill;
-
-            // Agregar el formulario al panel
-            panelMain.Controls.Add(formVer);
-            panelMain.Tag = formVer;
-
-            formVer.Show();
+            OpenFormInPanel(new formPriceG());
         }
 
         private void lblAside_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            formAside formVer = new formAside();
-
-            // Configuracion del formulario para que se comporte como control
-            formVer.TopLevel = false;
-            formVer.Dock = DockStyle.Fill;
-
-            // Agregar el formulario al panel
-            panelMain.Controls.Add(formVer);
-            panelMain.Tag = formVer;
-
-            formVer.Show();
+            OpenFormInPanel(new formAside());
         }
 
         private void lblPayments_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            formPayments formVer = new formPayments();
-
-            // Configuracion del formulario para que se comporte como control
-            formVer.TopLevel = false;
-            formVer.Dock = DockStyle.Fill;
-
-            // Agregar el formulario al panel
-            panelMain.Controls.Add(formVer);
-            panelMain.Tag = formVer;
-
-            formVer.Show();
+            OpenFormInPanel(new formPayments());
         }
 
         private void lblShipping_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            formShipping formVer = new formShipping();
-
-            // Configuracion del formulario para que se comporte como control
-            formVer.TopLevel = false;
-            formVer.Dock = DockStyle.Fill;
-
-            // Agregar el formulario al panel
-            panelMain.Controls.Add(formVer);
-            panelMain.Tag = formVer;
-
-            formVer.Show();
+            OpenFormInPanel(new formShipping());
         }
 
         private void lblSaleReview_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            formSaleReview formVer = new formSaleReview();
-
-            // Configuracion del formulario para que se comporte como control
-            formVer.TopLevel = false;
-            formVer.Dock = DockStyle.Fill;
-
-            // Agregar el formulario al panel
-            panelMain.Controls.Add(formVer);
-            panelMain.Tag = formVer;
-
-            formVer.Show();
+            OpenFormInPanel(new formSaleReview());
         }
 
         // Formulario exclusivo para administradores
         private void lblAdmin_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            formAdmin formVer = new formAdmin();
-
-            // Configuracion del formulario para que se comporte como control
-            formVer.TopLevel = false;
-            formVer.Dock = DockStyle.Fill;
-
-            // Agregar el formulario al panel
-            panelMain.Controls.Add(formVer);
-            panelMain.Tag = formVer;
-
-            formVer.Show();
+            OpenFormInPanel(new formAdmin());
         }
 
         private void timerD_Tick(object sender, EventArgs e)

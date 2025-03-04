@@ -131,7 +131,7 @@ namespace Proyecto_AceHats
                 try
                 {
                     // Abrir conexion
-                    connection.Open(); // IMPORTANTE!!! PERDI 2 HORAS TRATANDO DE AVERIGUAR PORQUE 
+                    connection.Open(); // IMPORTANTE!!! PERDI 2 PUTISIMAS HORAS TRATANDO DE AVERIGUAR PORQUE 
                     //PUTAS MADRES LA APLICACION NO SE CONECTABA A LA BASE DE DATOS Y AL FINAL ERA QUE HABIA 
                     //BORRADO ESTA JODIDA LINEA DE MIERDAAAAAAAAAAA
 

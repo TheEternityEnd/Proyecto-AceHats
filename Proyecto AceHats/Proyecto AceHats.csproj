@@ -166,6 +166,12 @@
     <Compile Include="Forms\formLogIn.Designer.cs">
       <DependentUpon>formLogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RegularForms\subForms\formAddGoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegularForms\subForms\formAddGoods.Designer.cs">
+      <DependentUpon>formAddGoods.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\formAceHats.resx">
@@ -201,6 +207,9 @@
     <EmbeddedResource Include="Forms\RegularForms\formShipping.resx">
       <DependentUpon>formShipping.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegularForms\subForms\formAddGoods.resx">
+      <DependentUpon>formAddGoods.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -235,8 +244,6 @@
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
     <None Include="Resources\userPH.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\RegularForms\subForms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
