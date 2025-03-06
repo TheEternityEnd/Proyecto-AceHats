@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvInv = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnAddP = new System.Windows.Forms.Button();
             this.btnMod = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInv)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -47,13 +47,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Gestion de Inventario";
             // 
-            // dataGridView1
+            // dgvInv
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 106);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(740, 424);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInv.Location = new System.Drawing.Point(32, 106);
+            this.dgvInv.Name = "dgvInv";
+            this.dgvInv.Size = new System.Drawing.Size(740, 424);
+            this.dgvInv.TabIndex = 1;
             // 
             // txtSearch
             // 
@@ -97,12 +97,12 @@
             this.Controls.Add(this.btnMod);
             this.Controls.Add(this.btnAddP);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvInv);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "formInv";
             this.Text = "formInv";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,7 +111,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvInv;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnAddP;
         private System.Windows.Forms.Button btnMod;

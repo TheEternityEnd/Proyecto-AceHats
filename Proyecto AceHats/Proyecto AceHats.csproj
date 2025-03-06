@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DBConnection.cs" />
     <Compile Include="Forms\formAceHats.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +243,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\imagen_default.jpg" />
     <None Include="Resources\userPH.png" />
   </ItemGroup>
   <ItemGroup />

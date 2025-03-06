@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using MySql.Data.Types;
 using MySql.Data.MySqlClient;
 using Proyecto_AceHats.Forms;
+using Proyecto_AceHats.Classes;
 
 namespace Proyecto_AceHats
 {
@@ -122,11 +123,11 @@ namespace Proyecto_AceHats
             string encryptedPass = EncryptPass(pass);
 
             // Conexion a MySQL
-            string connectionString = "server=192.168.1.3; database=proyecto_acehats; uid=newuser; pwd=Taddei98"; // LaPecerda
+            // string connectionString = "server=192.168.1.3; database=proyecto_acehats; uid=newuser; pwd=Taddei98"; // LaPecerda
             // string connectionString = "server=localhost; database=proyecto_acehats; uid=root; pwd=admin"; // LaMaleducada
 
             // Prevencion de inyeccion SQL
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(DBConnection.connectionString))
             {
                 try
                 {

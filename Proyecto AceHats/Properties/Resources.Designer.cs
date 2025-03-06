@@ -63,6 +63,16 @@ namespace Proyecto_AceHats.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imagen_default {
+            get {
+                object obj = ResourceManager.GetObject("imagen_default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logoPH {
             get {
                 object obj = ResourceManager.GetObject("logoPH", resourceCulture);

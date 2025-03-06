@@ -12,6 +12,7 @@ using System.Drawing.Drawing2D;
 using MySql.Data.MySqlClient; // Libreria MySQL.Data en NuGet
 using Org.BouncyCastle.Tls;
 using System.Security.Cryptography;
+using Proyecto_AceHats.Classes;
 
 namespace Proyecto_AceHats
 {
@@ -122,12 +123,12 @@ namespace Proyecto_AceHats
             // Encriptar la contraseña
             string encryptedPass = EncryptPass(pass);
 
-            // Conexion a MySQL
-            string connectionString = "server=192.168.1.3; database=proyecto_acehats; uid=newuser; pwd=Taddei98"; // LaPecerda
+            // Conexion a MySQL ==SIN USAR==
+            // string connectionString = "server=192.168.1.3; database=proyecto_acehats; uid=newuser; pwd=Taddei98"; // LaPecerda
             // string connectionString = "server=localhost; database=proyecto_acehats; uid=root; pwd=admin"; // LaMaleducada
         
             // Prevencion de inyeccion SQL
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(DBConnection.connectionString))
             {
                 try
                 {

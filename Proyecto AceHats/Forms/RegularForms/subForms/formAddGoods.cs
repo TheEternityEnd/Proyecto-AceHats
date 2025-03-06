@@ -10,13 +10,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using MySql.Data.MySqlClient;
+using Proyecto_AceHats.Classes;
 
 namespace Proyecto_AceHats.Forms.RegularForms.subForms
 {
     public partial class formAddGoods: Form
     {
-
-        private string connectionString = "server=192.168.1.3; database=proyecto_acehats; uid=newuser; pwd=Taddei98";
         private string relativeImageRute = null;
 
         public formAddGoods()
@@ -56,7 +55,7 @@ namespace Proyecto_AceHats.Forms.RegularForms.subForms
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(DBConnection.connectionString))
                 {
                     conn.Open();
                     string query = "INSERT INTO productos (nombre, descripcion, codigo_barras, categoria, precio_compra, precio_menudeo, precio_mayoreo, stock, imagen) " +
